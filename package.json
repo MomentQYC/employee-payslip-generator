@@ -7,8 +7,8 @@
     "scripts": {
         "start": "node main.js",
         "build": "cd client && npm run build",
-        "vercel-build": "npm run client:install && npm run build",
-        "client:install": "cd client && npm install",
+        "vercel-build": "NODE_OPTIONS=--openssl-legacy-provider npm run client:install && npm run build",
+        "client:install": "cd client && npm install --legacy-peer-deps",
         "heroku-postbuild": "npm run client:install && npm run build",
         "client": "cd client && npm start",
         "server": "env-cmd -r ./.env-cmdrc -e development nodemon main.js",
