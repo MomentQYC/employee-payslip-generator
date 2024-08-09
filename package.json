@@ -7,15 +7,16 @@
     "scripts": {
         "start": "node main.js",
         "build": "cd client && npm run build",
-        "vercel-build": "npm run client:install && npm run build",
+        "vercel-build": "npm run client:install && npm run build --openssl-legacy-provider",
         "client:install": "cd client && npm install --legacy-peer-deps",
-        "heroku-postbuild": "npm run client:install && npm run build",
+        "heroku-postbuild": "npm run client:install && npm run build --openssl-legacy-provider",
         "client": "cd client && npm start",
         "server": "env-cmd -r ./.env-cmdrc -e development nodemon main.js",
         "prod": "NODE_ENV=production node main.js",
         "dev": "concurrently -n 'server, client' -c 'red,green' \"npm run server\" \"npm run client\""
     },
     "dependencies": {
+        "@sendgrid/mail": "^7.4.2",
         "cookie-parser": "~1.4.4",
         "cors": "^2.8.5",
         "cron": "^1.8.2",
@@ -26,15 +27,14 @@
         "form-data": "^4.0.0",
         "http-errors": "~1.6.3",
         "lodash": "^4.17.20",
+        "mailgun.js": "^4.0.1",
         "moment": "^2.29.1",
         "morgan": "~1.9.1",
         "multer": "^1.4.2",
         "nodemailer": "^6.9.3",
         "nodemailer-html-to-text": "^3.2.0",
         "numeral": "^2.0.6",
-        "pug": "^3.0.2",
-        "mailgun.js": "^4.0.1",
-        "@sendgrid/mail": "^7.4.2"
+        "pug": "^3.0.2"
     },
     "devDependencies": {
         "concurrently": "^6.0.2",
